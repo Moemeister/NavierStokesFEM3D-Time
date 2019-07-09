@@ -33,14 +33,14 @@ int main(int argc, char *argv[])
     zeroes(b,4*m.getSize(NODES));
     ensamblaje(m,localKs,localbs,K,b);
     showMatrix(K); showVector(b);
-    cout << "QUE PUTAS";
+    
     cout << "******************************\n";
     //cout << K.size() << " - "<<K.at(0).size()<<"\n";
     //cout << b.size() <<"\n";
 
     applyDirichlet(m,K,b);
     // showMatrix(K); showVector(b);
-    cout << "ALVVVV";
+   
     cout << "******************************\n";
     //cout << K.size() << " - "<<K.at(0).size()<<"\n";
     //cout << b.size() <<"\n";

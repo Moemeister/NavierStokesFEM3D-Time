@@ -275,7 +275,7 @@ Matrix createLocalK(int e,mesh &m){
     calculateB(B);
     //productRealMatrix(u_bar*J/D,productMatrixMatrix(e_star,productMatrixMatrix(A,B,2,2,6),6,2,6),alpha);
     productRealMatrix((u_bar*J)/D, productMatrixMatrix(productMatrixMatrix(e_star, A, 12, 3, 3), B, 12, 3, 12),alpha);
-    cout << "ALPHA";
+    
 
     //Preparando beta
     nu = m.getParameter(DYNAMIC_VISCOSITY);
@@ -284,19 +284,19 @@ Matrix createLocalK(int e,mesh &m){
     transpose(B,Bt);
     //productRealMatrix(nu*Ve/(D*D),productMatrixMatrix(Bt,productMatrixMatrix(At,productMatrixMatrix(A,B,2,2,6),2,2,6),6,2,6),beta);
     productRealMatrix((nu*Ve)/(D*D), productMatrixMatrix(productMatrixMatrix(productMatrixMatrix(Bt, At, 12, 3, 3), A, 12, 3, 3), B, 12, 3, 12),beta);
-    cout << "BETA";
+    
     //Preparando gamma
     rho = m.getParameter(DENSITY);
     calculateC(C);
     //productRealMatrix(J/(rho*D),productMatrixMatrix(e_star,productMatrixMatrix(A,C,2,2,3),6,2,3),gamma);
     productRealMatrix(J/(rho*D), productMatrixMatrix(productMatrixMatrix(e_star, A, 12, 3, 3), C, 12, 3, 4),gamma);
-    cout << "GAMMA";
+    
     //Preparando delta
     transpose(C,Ct);
     transpose(e_star,e_star_t);
     //productRealMatrix(J/D,productMatrixMatrix(Ct,productMatrixMatrix(At,e_star_t,2,2,6),3,2,6),delta);
     productRealMatrix(J/D,productMatrixMatrix(productMatrixMatrix(Ct, At, 4, 3, 3), e_star_t, 4, 3, 12),delta);
-    cout << "DELTA";
+    
     //Colocando submatrices en K
     zeroes(K,16);
     ubicarSubMatriz(K,0,11,0,11,sumMatrix(alpha,beta,12,12));
